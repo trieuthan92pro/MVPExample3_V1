@@ -1,4 +1,4 @@
-package com.example.framgiatrieuvanthan.mvpexample3.model;
+package com.example.framgiatrieuvanthan.mvpexample3.data.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,11 +6,20 @@ import android.os.Parcelable;
 public class Audio implements Parcelable {
     private String data, title, artist, album;
 
+
     protected Audio(Parcel in) {
         data = in.readString();
         title = in.readString();
         artist = in.readString();
         album = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(data);
+        dest.writeString(title);
+        dest.writeString(artist);
+        dest.writeString(album);
     }
 
     public static final Creator<Audio> CREATOR = new Creator<Audio>() {
@@ -62,11 +71,4 @@ public class Audio implements Parcelable {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(data);
-        dest.writeString(title);
-        dest.writeString(artist);
-        dest.writeString(album);
-    }
 }

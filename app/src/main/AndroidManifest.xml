@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".screen.audio_home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,11 +18,11 @@
         </activity>
 
         <service
-            android:name=".service.PlayerService"
+            android:name=".service.audioDetail.PlayerService"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".view.PayerDetailActivity"></activity>
+        <activity android:name=".screen.audio_detail.PlayerDetailActivity"></activity>
     </application>
 
 </manifest>

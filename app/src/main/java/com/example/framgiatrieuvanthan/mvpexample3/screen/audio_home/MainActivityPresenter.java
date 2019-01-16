@@ -1,7 +1,6 @@
-package com.example.framgiatrieuvanthan.mvpexample3.persenter.main;
+package com.example.framgiatrieuvanthan.mvpexample3.screen.audio_home;
 
-import com.example.framgiatrieuvanthan.mvpexample3.model.Audio;
-import com.example.framgiatrieuvanthan.mvpexample3.persenter.BaseView;
+import com.example.framgiatrieuvanthan.mvpexample3.data.model.Audio;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ public class MainActivityPresenter {
         this.listAudio = listAudio;
     }
 
-    public interface View extends BaseView{
+    public interface View {
         public void showDetail();
     }
 }

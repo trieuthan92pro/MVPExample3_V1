@@ -21,8 +21,11 @@ public interface MainActivityContract {
     }
 
     interface Presenter extends BasePresenter {
+
         void loadListAudio();
+
         void reloadListAudio(boolean isNeeded);
+
     }
 
 }

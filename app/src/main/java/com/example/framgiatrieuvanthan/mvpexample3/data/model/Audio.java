@@ -1,25 +1,35 @@
 package com.example.framgiatrieuvanthan.mvpexample3.data.model;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Audio implements Parcelable {
     private String data, title, artist, album;
+    private int duration;
+    private Bitmap bitmapAudio;
 
+    public Audio(){
+
+    }
+
+    public Audio(String data, String title, String artist,
+                 String album, int duration, Bitmap bitmapAudio) {
+        this.data = data;
+        this.title = title;
+        this.artist = artist;
+        this.album = album;
+        this.duration = duration;
+        this.bitmapAudio = bitmapAudio;
+    }
 
     protected Audio(Parcel in) {
         data = in.readString();
         title = in.readString();
         artist = in.readString();
         album = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(data);
-        dest.writeString(title);
-        dest.writeString(artist);
-        dest.writeString(album);
+        duration = in.readInt();
+        bitmapAudio = in.readParcelable(Bitmap.class.getClassLoader());
     }
 
     public static final Creator<Audio> CREATOR = new Creator<Audio>() {
@@ -33,6 +43,21 @@ public class Audio implements Parcelable {
             return new Audio[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(data);
+        dest.writeString(title);
+        dest.writeString(artist);
+        dest.writeString(album);
+        dest.writeInt(duration);
+        dest.writeParcelable(bitmapAudio, flags);
+    }
 
     public String getData() {
         return data;
@@ -66,9 +91,19 @@ public class Audio implements Parcelable {
         this.album = album;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public int getDuration() {
+        return duration;
     }
 
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public Bitmap getBitmapAudio() {
+        return bitmapAudio;
+    }
+
+    public void setBitmapAudio(Bitmap bitmapAudio) {
+        this.bitmapAudio = bitmapAudio;
+    }
 }

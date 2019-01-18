@@ -7,11 +7,29 @@ import com.example.framgiatrieuvanthan.mvpexample3.data.model.Audio;
 import java.util.List;
 
 public interface AudioDataSource {
-    interface LocalDataSource {
-        void getListAudio(@NonNull AudioCallback<List<Audio>> audioCallback);
+
+    interface LoadAudioCallback {
+
+         void onAudioLoaded(List<Audio> list);
+
+         void onAudioNotAvailable();
+
     }
 
-    interface RemoteDataSource {
+    interface GetAudioCallback {
+
+        void onAudioLoaded(List<Audio> list);
+
+        void onAudioNotAvailable();
 
     }
+
+    void refreshAudioList();
+
+    void getAudioList(LoadAudioCallback callback);
+
+    void getAudio(@NonNull String audioId, GetAudioCallback callback);
+
+    //TODO: add new method that needed
+
 }

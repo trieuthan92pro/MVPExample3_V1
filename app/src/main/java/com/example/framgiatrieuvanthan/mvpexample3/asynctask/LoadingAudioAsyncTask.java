@@ -11,11 +11,11 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.framgiatrieuvanthan.mvpexample3.R;
 import com.example.framgiatrieuvanthan.mvpexample3.data.model.Audio;
+import com.example.framgiatrieuvanthan.mvpexample3.utils.AudioUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,25 +43,13 @@ public class LoadingAudioAsyncTask extends AsyncTask<Void, Void, List<Audio>> {
 
     public List<Audio> findAllMedia() {
         String selection = MediaStore.Audio.Media.IS_MUSIC + " == 0";
-
-        String[] projection = {
-                MediaStore.Audio.Media._ID,     //0
-                MediaStore.Audio.Media.ARTIST,  //1
-                MediaStore.Audio.Media.TITLE,   //2
-                MediaStore.Audio.Media.DATA,    //3
-                MediaStore.Audio.Media.DISPLAY_NAME,//4
-                MediaStore.Audio.Media.DURATION,//5
-                MediaStore.Audio.Media.ALBUM,   //6
-                MediaStore.Audio.Media.TRACK,    //7
-        };
-
+        String[] projection = AudioUtils.PROJECTIONS;
         Cursor cursor = mContentResolver.query(
                 MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                 projection,
                 selection,
                 null,
                 null);
-        byte[] artImg = null;
         List<Audio> songs = new ArrayList<>();
         while (cursor.moveToNext()) {
             String album = cursor.getString(6);

@@ -15,12 +15,11 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity
-        implements MainActivityPresenter.View{
+        implements MainActivityContract.View {
     private RecyclerView mRecyclerView;
     private MainActivityPresenter mPresenter;
     private List<Audio> audios;
     private AudioAdapter audioAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +28,34 @@ public class MainActivity extends AppCompatActivity
         initComponent();
     }
 
-    @Override
-    public void showDetail() {
-
-    }
 
     private void initComponent() {
         mRecyclerView = findViewById(R.id.recycler_view);
         audioAdapter = new AudioAdapter();
-        mPresenter = new MainActivityPresenter(this);
+    }
+
+    @Override
+    public void setPresenter(MainActivityContract.Presenter presenter) {
+
+    }
+
+    @Override
+    public void setLoadingInprogress(boolean isLoading) {
+
+    }
+
+    @Override
+    public void showListAudio(List<Audio> listAudio) {
+
+    }
+
+    @Override
+    public void showNoDataLoaded() {
+
+    }
+
+    @Override
+    public void showLoadingAudioError() {
+
     }
 }

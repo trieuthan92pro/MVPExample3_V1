@@ -14,7 +14,6 @@ public class AudioLocalDataSource implements AudioDataSource.LocalDataSource {
     }
 
     private void getLocalAudioSource(AudioCallback<List<Audio>> audioCallback) {
-        LoadAudioService loadAudioService;
         // load audio from service
     }
 }
